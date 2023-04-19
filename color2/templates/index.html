@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Color Extractor</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+
+</head>
+
+<body class="page">
+  <div class="title_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='images/owl.jpg')}}" alt="" />
+            <span>
+              Color Extraction
+            </span>
+          </a>
+
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <section class="about_section layout_padding mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="img-box">
+            {% if img %}
+            <img src="{{img}}">
+            {% else %}
+            <img src="{{ url_for('static', filename='images/about-img.png')}}" alt="" id="disimg" />
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="detail-box">
+            <div class="custom_heading-container">
+              <h2>
+                About Image
+              </h2>
+            </div>
+            {% if pal %}
+            <div class="img-box">
+            <img src="{{pal}}">
+            </div>
+            {% else %}
+            <p>
+              Pick some image to check out its colors.
+            </p>
+            {% endif %}
+            <div>
+              <form action = "{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+                <label for="upimg" class="btn fileinput" >Select Image</label>
+                <input name="img" id="upimg" style="visibility:hidden;" type="file" accept="image/*" onchange="javascript:this.form.submit();">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container-fluid footer_section">
+    <p>
+      &copy; 2023 All Rights Reserved By
+      <a href="https://html.design/">HootHoot</a>
+    </p>
+  </footer>
+  <!-- footer section -->
+
+
+
+</body>
+
+</html>
